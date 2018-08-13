@@ -5,8 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SaudeChain Project</title>
+
 </head>
 <body>
-    <h1>SaudeChain</h1>
+    <h1>SaudeChain - Healthchain test page</h1>
+    <div>Get Developer - 0x263C3Ab7E4832eDF623fBdD66ACee71c028Ff591 - details</div>
+    <div id="dev"></div>
+    
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="abi.js"></script>
+    <script src="contract.js"></script>
+    <script>
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/QPF0qjGpH9OjFuuMrCse"))
+        }
+        var contract = web3.eth.contract(RegMedABI).at("0x937ba4e77dd31d5e6bc47f77180ddcdeaa330440"); 
+        getDeveloperDetail("0x263C3Ab7E4832eDF623fBdD66ACee71c028Ff591");
+    </script>
 </body>
 </html>
