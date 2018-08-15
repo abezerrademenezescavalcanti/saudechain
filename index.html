@@ -13,6 +13,8 @@
         <h1>SaudeChain - Healthchain test page</h1>
         <div id="dev">Connected to contract? <span id="statusConnectionContract">No</span></div>
         <br /><br />
+        <h2>Record Categories</h2>
+        <br />
         <div id="divFormCategory" class="caixa panel panel-default">
             <div class="panel-heading">Inserts new record category</div>
             <div class="panel-body">
@@ -41,7 +43,50 @@
             <div class="panel-footer" id="statusFormCategory">
             </div>
         </div>
+
+        <br /><br />
+        <h2>Developers</h2>
+        <br />
+        <div id="divFormCategory" class="caixa panel panel-default">
+            <div class="panel-heading">Inserts new developer</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmDeveloper" name="frmDeveloper" action="#">
+                    <div class="form-group">
+                        <label for="devAddress" class="control-label col-sm-2">Developer Ethereum Address: </label>
+                        <div class="col-sm-10">
+                            <input type="text" name="devAddress" id="devAddress" maxlength="46" size="49">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="devCommission" class="control-label col-sm-2">Comission: </label>
+                        <div class="col-sm-10">
+                            <input type="number" name="devCommission" id="devCommission" min="1" max="100000000000000000">
+                            &nbsp; 
+                            <i>You must be aware that creating a new developer her commision will be deducted from your commition shares</i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="devVotes" class="control-label col-sm-2">Votes: </label>
+                        <div class="col-sm-10">
+                            <input type="number" name="devVotes" id="devVotes" min="1" max="100">
+                            &nbsp; 
+                            <i>You must be aware that creating a new developer her votes will be deducted from your vote shares</i>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" id="btnInsertNewDeveloper" onclick="insertNewDeveloper()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewDeveloper" onclick="startOverNewDeveloper()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormDeveloper">
+            </div>
+        </div>
     </div>
+
+    
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
