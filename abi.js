@@ -25,7 +25,7 @@ function waitForTxToBeMined(txHash, objStatus) {
                 $(objStatus).css("background-color", "LawnGreen");
                 $(objStatus).html("Record successfuly saved at block: " + txReceipt.blockNumber + " - Transaction hash: " + txHash);            
             } else {
-                $(objStatus).css("background-color", "lightred");
+                $(objStatus).css("background-color", "Salmon");
                 $(objStatus).html("There was an error - Transaction hash: " + txHash + " final status: " + txReceipt.status);            
             }
         } else {

@@ -42,7 +42,7 @@ function startOverNewDeveloper() {
 function insertNewDeveloper() {
     var frm = document.frmDeveloper;
     if (frm.devAddress.value.length < 40 || frm.devCommission.value.length < 2 || frm.devVotes.value.length < 1) {
-        $("#statusFormDeveloper").css("background-color", "lightred");
+        $("#statusFormDeveloper").css("background-color", "Salmon");
         $("#statusFormDeveloper").html("You must inform appropriate information");
         return
     }

@@ -84,15 +84,54 @@
             <div class="panel-footer" id="statusFormDeveloper">
             </div>
         </div>
+
+
+        <br /><br />
+        <h2>Thrid-Party Institutions</h2>
+        <br />
+        <div id="divFormCategory" class="caixa panel panel-default">
+            <div class="panel-heading">Inserts new Thrid-Party Issuer</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmNewTP" name="frmNewTP" action="#">
+                    <div class="form-group">
+                        <label for="tpAddress" class="control-label col-sm-4">Thrid-Party Institution Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="tpAddress" id="tpAddress" maxlength="46" size="55">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tpName" class="control-label col-sm-4">Thrid-Party Institution name: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="tpName" id="tpName" maxlength="256" size="49">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tpCountry" class="control-label col-sm-4">Country where the Institution is based: </label>
+                        <div class="col-sm-8">
+                            <select name="tpCountry" id="tpCountry">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" id="btnInsertNewTP" onclick="insertNewTP()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewTP" onclick="startOverNewTP()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormTP">
+            </div>
+        </div>
     </div>
 
-    
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="abi.js"></script>
     <script src="developer.js"></script>
     <script src="category.js"></script>
+    <script src="tp.js"></script>
     <script src="start.js"></script>
 </body>
 </html>
