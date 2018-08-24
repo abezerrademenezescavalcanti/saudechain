@@ -1,5 +1,5 @@
 function loadTPCountryList() {
-    $.getJSON("http://restcountries.eu/rest/v2/all?fields=name;alpha2Code", function(j) {
+    $.getJSON("https://restcountries.eu/rest/v2/all?fields=name;alpha2Code", function(j) {
         let options = '<option value="" selected> </option>';
         for (var i=0; i< j.length; i++) {
             options += '<option value="' + j[i].alpha2Code + '">' + j[i].alpha2Code + ' - ' + j[i].name + '</option>';
