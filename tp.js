@@ -6,11 +6,11 @@ function loadTPCountryList() {
         }
         $("select#tpCountry").html(options);
     })
-    .error(function(jqXHR, textStatus, errorThrown) {
+    .fail(function(jqXHR, textStatus, errorThrown) {
         console.log("error " + textStatus);
         console.log("incoming Text " + jqXHR.responseText);
         console.log(errorThrown);
-    })
+    }); 
 }
 
 function startOverNewTP() {
