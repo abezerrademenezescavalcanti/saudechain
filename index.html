@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="catCode" class="control-label col-sm-2">Code: </label>
                         <div class="col-sm-10">
-                            <input type="text" name="catCode" id="catCode" maxlength="22" size="26">
+                            <input type="text" name="catCode" id="catCode" maxlength="10" size="14">
                             - <i>It is in hexadecimal code following UTF-8 Table - <a href='https://www.utf8-chartable.de/unicode-utf8-table.pl' target="_blank">Check it here</a></i>
                         </div>
                     </div>
@@ -53,29 +53,21 @@
             <div class="panel-body">
                 <form class="form-horizontal" id="frmDeveloper" name="frmDeveloper" action="#">
                     <div class="form-group">
-                        <label for="devAddress" class="control-label col-sm-2">Developer Ethereum Address: </label>
-                        <div class="col-sm-10">
+                        <label for="devAddress" class="control-label col-sm-4">Developer Ethereum Address: </label>
+                        <div class="col-sm-8">
                             <input type="text" name="devAddress" id="devAddress" maxlength="46" size="49">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="devCommission" class="control-label col-sm-2">Comission: </label>
-                        <div class="col-sm-10">
+                        <label for="devCommission" class="control-label col-sm-4">Comission: </label>
+                        <div class="col-sm-8">
                             <input type="number" name="devCommission" id="devCommission" min="1" max="100000000000000000">
                             &nbsp; 
-                            <i>You must be aware that creating a new developer her commision will be deducted from your commition shares</i>
+                            <i>You must be aware that creating a new developer her comission will be deducted from your comission shares</i>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="devVotes" class="control-label col-sm-2">Votes: </label>
-                        <div class="col-sm-10">
-                            <input type="number" name="devVotes" id="devVotes" min="1" max="100">
-                            &nbsp; 
-                            <i>You must be aware that creating a new developer her votes will be deducted from your vote shares</i>
-                        </div>
-                    </div>
+                    </div>                    
                     <div class="form-group"> 
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-offset-2 col-sm-12">
                         <button type="button" id="btnInsertNewDeveloper" onclick="insertNewDeveloper()" class="btn btn-default">Submit to Smart Contract</button>
                         <button type="button" id="btnStartOverNewDeveloper" onclick="startOverNewDeveloper()" class="btn btn-default">Start over</button>
                         </div>
@@ -141,7 +133,7 @@
                     <div class="form-group">
                         <label for="patDate" class="control-label col-sm-4">Date of Birth: </label>                        
                         <div class="col-sm-8">
-                            <input type="text" id="patDate" placeholder="1979-07-30" name="patDate" class="form-control" size="14" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+                            <input type="text" id="patDate" placeholder="1979-07-30" name="patDate" class="form-control fieldDate" size="14" data-provide="datepicker" data-date-format="yyyy-mm-dd">
                             &nbsp;
                             <i>Year - Month - Day format</i>
                         </div>
@@ -182,19 +174,94 @@
             <div class="panel-footer" id="statusFormPatient">
             </div>
         </div>
+        
+        <br />
+        <div id="divFormAllow" class="caixa panel panel-default">
+            <div class="panel-heading">Allow 3rd-Party issuers to handle Patient's records</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmAllow" name="frmAllow" action="#">
+                    <div class="form-group">
+                        <label for="allowTPAddress" class="control-label col-sm-4">3rd-Party Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="allowTPAddress" id="allowTPAddress" maxlength="46" size="49">
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <button type="button" id="btnInsertNew3TPAllowance" onclick="insertNew3TPAllowance()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNew3TPAllowance" onclick="startOverNew3TPAllowance()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormAllow">
+            </div>
+        </div>
+
+        <br />
+        <div id="divFormRecord" class="caixa panel panel-default">
+            <div class="panel-heading">Inserts new Patient Health Record</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmNewRecord" name="frmNewRecord" action="#">
+                    <div class="form-group">
+                        <label for="recPatAddress" class="control-label col-sm-4">Patient Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recPatAddress" id="recPatAddress" maxlength="46" size="55">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recCode" class="control-label col-sm-4">Record Category Code: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recCode" id="recCode" maxlength="22" size="26">
+                            - <i>It is in hexadecimal code following UTF-8 Table - <a href='https://www.utf8-chartable.de/unicode-utf8-table.pl' target="_blank">Check it here</a></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recDate" class="control-label col-sm-4">Date of Fact: </label>                        
+                        <div class="col-sm-8">
+                            <input type="text" id="recDate" placeholder="2018-07-30" name="recDate" class="form-control fieldDate" size="14" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+                            &nbsp;
+                            <i>Year - Month - Day format</i>
+                        </div>
+                    </div>                   
+                    <div class="form-group">
+                        <label for="recDetails" class="control-label col-sm-4">Details: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recDetails" id="recDetails" maxlength="256" size="80">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recTPAddress" class="control-label col-sm-4">Third-Party Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recTPAddress" id="recTPAddress" maxlength="46" size="55">
+                            <br /><i>In case a third-party is inserting data on patient's behalf</i>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" id="btnInsertNewRecord" onclick="insertNewRecord()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewRecord" onclick="startOverNewRecord()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormRecord">
+            </div>
+        </div>
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.mask.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
     <script src="abi.js"></script>
     <script src="developer.js"></script>
     <script src="category.js"></script>
     <script src="tp.js"></script>
     <script src="patient.js"></script>
+    <script src="record.js"></script>
     <script src="start.js"></script>
 </body>
 </html>

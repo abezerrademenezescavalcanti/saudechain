@@ -4,10 +4,23 @@ jQuery(document).ready(function() {
     $("#btnStartOverNewDeveloper").hide();
     $("#btnStartOverNewTP").hide();
     $("#btnStartOverNewPatient").hide();
+    $("#btnStartOverNewRecord").hide();
+    $("#btnStartOverNew3TPAllowance").hide();
     getTotalDevelopers();
     loadPatientCountryList();
     loadTPCountryList();
     $('#patDate').datepicker({
+        format: "yyyy-mm-dd",
+        startView: 1,
+        clearBtn: true,
+        autoclose: true,
+        beforeShowYear: function(date){
+                      if (date.getFullYear() == 2007) {
+                        return false;
+                      }
+                    }
+    });
+    $('#recDate').datepicker({
         format: "yyyy-mm-dd",
         startView: 1,
         clearBtn: true,

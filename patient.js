@@ -36,12 +36,8 @@ function insertNewPatient() {
     }
     $("#statusFormPatient").css("background-color", "lightblue");
     $("#statusFormPatient").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
-    console.log("Sending..." + frm.patAddress.value);
-    var countryBytes = [];
-    for (var i = 0; i < frm.patCountry.value.length; i++) {
-        countryBytes.push(frm.patCountry.value.charCodeAt(i));
-    }
-    contract.newPatient(frm.patAddress.value, frm.patDate.value, frm.patGender.value, frm.patCity.value, countryBytes, frm.patEtnicity.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+    console.log("Sending... " + frm.patAddress.value);
+    contract.newPatient(frm.patAddress.value, frm.patDate.value, frm.patGender.value, frm.patCity.value, web3.fromAscii(frm.patCountry.value), frm.patEtnicity.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
         if (!err) {
             $("#statusFormPatient").css("background-color", "yellow");
             $("#statusFormPatient").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
@@ -54,4 +50,39 @@ function insertNewPatient() {
     });
     $("#btnStartOverNewPatient").show();
     $("#btnInsertNewPatient").hide();
+}
+
+
+function insertNew3TPAllowance() {
+    var frm = document.frmAllow;
+    if (frm.allowTPAddress.value.length < 41) {
+        $("#statusFormAllow").css("background-color", "Salmon");
+        $("#statusFormAllow").html("You must inform appropriate information");
+        return
+    }
+    $("#statusFormAllow").css("background-color", "lightblue");
+    $("#statusFormAllow").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
+    console.log("Sending... " + frm.allowTPAddress.value);
+    contract.allowIssuers(frm.allowTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+        if (!err) {
+            $("#statusFormAllow").css("background-color", "yellow");
+            $("#statusFormAllow").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
+            waitForTxToBeMined(result, "#statusFormAllow");
+        } else {
+            console.error(err);
+            $("#statusFormAllow").css("background-color", "Salmon");
+            $("#statusFormAllow").html("Error " + JSON.stringify(err));
+        }
+    });
+    $("#btnStartOverNew3TPAllowance").show();
+    $("#btnInsertNew3TPAllowance").hide();
+}
+
+function startOverNew3TPAllowance() {
+    var frm = document.frmAllow;
+    frm.allowTPAddress.value = "";
+    $("#btnStartOverNew3TPAllowance").hide();
+    $("#btnInsertNew3TPAllowance").show();
+    $("#statusFormAllow").css("background-color", "lightgray");
+    $("#statusFormAllow").html("");
 }
