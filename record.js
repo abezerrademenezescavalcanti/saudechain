@@ -54,3 +54,54 @@ function insertNewRecord() {
     $("#btnStartOverNewRecord").show();
     $("#btnInsertNewRecord").hide();
 }
+
+
+function startOverMediaToRecord() {
+    var frm = document.frmMedia;
+    frm.mediaPatAddress.value = "";
+    frm.mediaRecID.value = "";
+    frm.mediaURL.value = "";
+    frm.mediaTPAddress.value = "";
+    $("#btnStartOverMediaToRecord").hide();
+    $("#btnInsertMediaToRecord").show();
+    $("#statusFormMedia").css("background-color", "lightgray");
+    $("#statusFormMedia").html("");
+}
+
+function insertMediaToRecord() {
+    var frm = document.frmMedia;
+    if (frm.mediaPatAddress.value.length < 41) {
+        $("#statusFormMedia").css("background-color", "Salmon");
+        $("#statusFormMedia").html("You must inform appropriate information");
+        $("#mediaPatAddress").focus();
+        return
+    }
+    if (frm.mediaRecID.value.length < 1) {
+        $("#statusFormMedia").css("background-color", "Salmon");
+        $("#statusFormMedia").html("You must inform appropriate information");
+        $("#mediaRecID").focus();
+        return
+    }
+    if (frm.mediaURL.value.length < 8) {
+        $("#statusFormMedia").css("background-color", "Salmon");
+        $("#statusFormMedia").html("You must inform appropriate information");
+        $("#mediaURL").focus();
+        return
+    }    
+    $("#statusFormMedia").css("background-color", "lightblue");
+    $("#statusFormMedia").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
+    console.log("Sending..." + frm.mediaPatAddress.value + " - " + frm.mediaRecID.value + " - " + frm.mediaURL.value);
+    contract.addMediaToRecord(frm.mediaPatAddress.value, frm.mediaRecID.value, frm.mediaURL.value, frm.mediaTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+        if (!err) {
+            $("#statusFormMedia").css("background-color", "yellow");
+            $("#statusFormMedia").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
+            waitForTxToBeMined(result, "#statusFormMedia");
+        } else {
+            console.error(err);
+            $("#statusFormMedia").css("background-color", "Salmon");
+            $("#statusFormMedia").html("Error " + JSON.stringify(err));
+        }
+    });
+    $("#btnStartOverMediaToRecord").show();
+    $("#btnInsertMediaToRecord").hide();
+}

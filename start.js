@@ -6,6 +6,7 @@ jQuery(document).ready(function() {
     $("#btnStartOverNewPatient").hide();
     $("#btnStartOverNewRecord").hide();
     $("#btnStartOverNew3TPAllowance").hide();
+    $("#btnStartOverMediaToRecord").hide();
     getTotalDevelopers();
     loadPatientCountryList();
     loadTPCountryList();
