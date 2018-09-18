@@ -293,6 +293,78 @@
             </div>
         </div>
 
+        <div>
+            <h2>Data Marketplace</h2>
+        </div>
+        <br />
+
+        <div>
+            <h4>Data Marketplace - Patient's perspective</h4>
+        </div>
+        <br />
+
+        <div id="divFormMRS" class="caixa panel panel-default">
+            <div class="panel-heading">Put Patient Health Record to sale</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmMRS" name="frmMRS" action="#">
+                    <div class="form-group">
+                       &nbsp;&nbsp;&nbsp;
+                       IMPORTANT: Only the Patient can perform this action with her own data</center>
+                    </div>
+                    <div class="form-group">
+                        <label for="mrsRecID" class="control-label col-sm-4">Patient Record ID: </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="mrsRecID" id="mrsRecID" min="1" maxlength="10" size="10">                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="msrPrice" class="control-label col-sm-4">Price (in wei): </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="mrsPrice" id="mrsPrice" value="10000000000000" min="1" max="90000000000000000" maxlength="19" size="20">
+                            <br />
+                            <i>Minimum price accepted: 10000000000000 wei (it represents only 0.00001 ether)</i> 
+                            <br />
+                            <i>to check/convert wei/ether numbers visit: <a href="https://etherconverter.online/" target="_blank">https://etherconverter.online/</a></i>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <button type="button" id="btnInsertNewMRS" onclick="insertNewMRS()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewMRS" onclick="startOverNewMRS()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormMRS">
+            </div>
+        </div>
+
+        <div id="divFormMRNS" class="caixa panel panel-default">
+            <div class="panel-heading">Remove Patient Health Record of sale's list</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmMRNS" name="frmMRNS" action="#">
+                    <div class="form-group">
+                       &nbsp;&nbsp;&nbsp;
+                       IMPORTANT: Only the Patient can perform this action with her own data</center>
+                    </div>
+                    <div class="form-group">
+                        <label for="mrnsRecID" class="control-label col-sm-4">Patient Record ID: </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="mrnsRecID" id="mrnsRecID" min="1" maxlength="10" size="10">                            
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <button type="button" id="btnInsertNewMRNS" onclick="insertNewMRNS()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewMRNS" onclick="startOverNewMRNS()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormMRNS">
+            </div>
+        </div>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -306,6 +378,7 @@
     <script src="tp.js"></script>
     <script src="patient.js"></script>
     <script src="record.js"></script>
+    <script src="marketplace.js"></script>
     <script src="start.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ if (typeof web3 !== 'undefined') {
 } else {
     web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/QPF0qjGpH9OjFuuMrCse"))
 }
-contract = web3.eth.contract(RegMedABI).at("0x759D2583d46A860dE71B9887Ac2522a259b85B6e"); 
+contract = web3.eth.contract(RegMedABI).at("0x3161efa25c4942de6e66193d4d44bcd98a0cbcf3"); 
 
 function waitForTxToBeMined(txHash, objStatus) {
     let txReceipt;

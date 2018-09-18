@@ -7,6 +7,8 @@ jQuery(document).ready(function() {
     $("#btnStartOverNewRecord").hide();
     $("#btnStartOverNew3TPAllowance").hide();
     $("#btnStartOverMediaToRecord").hide();
+    $("#btnStartOverNewMRS").hide();
+    $("#btnStartOverNewMRNS").hide();
     getTotalDevelopers();
     loadPatientCountryList();
     loadTPCountryList();
