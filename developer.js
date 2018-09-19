@@ -30,7 +30,6 @@ function getTotalDevelopers() {
 
 function startOverNewDeveloper() {
     var frm = document.frmDeveloper;
-    frm.devVotes.value = "";
     frm.devCommission.value = "";
     frm.devAddress.value = "";
     $("#btnStartOverNewDeveloper").hide();
@@ -58,6 +57,6 @@ function insertNewDeveloper() {
             console.error(err);
         }
     });
-    $("#btnStartOverNewCategory").show();
-    $("#btnInsertNewCategory").hide();
+    $("#btnStartOverNewDeveloper").show();
+    $("#btnInsertNewDeveloper").hide();
 }
