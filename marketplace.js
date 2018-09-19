@@ -1,7 +1,7 @@
 function startOverNewMRS() {
     var frm = document.frmMRS;
     frm.mrsRecID.value = "";
-    frm.mrsPrice.value = "";
+    frm.mrsPrice.value = "10000000000000";
     $("#btnStartOverNewMRS").hide();
     $("#btnInsertNewMRS").show();
     $("#statusFormMRS").css("background-color", "lightgray");
