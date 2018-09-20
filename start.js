@@ -9,6 +9,9 @@ jQuery(document).ready(function() {
     $("#btnStartOverMediaToRecord").hide();
     $("#btnStartOverNewMRS").hide();
     $("#btnStartOverNewMRNS").hide();
+    $("#btnStartOverRequestToBuy").hide();
+    $("#btnStartOverSell").hide();
+    $("#btnStartOverDeveloperWithdraw").hide();
     getTotalDevelopers();
     loadPatientCountryList();
     loadTPCountryList();

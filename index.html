@@ -263,13 +263,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="recCode" class="control-label col-sm-4">Patient Record ID: </label>
+                        <label for="mediaRecID" class="control-label col-sm-4">Patient Record ID: </label>
                         <div class="col-sm-8">
                             <input type="number" name="mediaRecID" id="mediaRecID" min="1" maxlength="10" size="10">                            
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="recDate" class="control-label col-sm-4">Media URL: </label>                        
+                        <label for="mediaURL" class="control-label col-sm-4">Media URL: </label>                        
                         <div class="col-sm-8">
                             <input type="text" name="mediaURL" id="mediaURL" maxlength="255" size="100">
                         </div>
@@ -339,6 +339,7 @@
             </div>
         </div>
 
+        <br />
         <div id="divFormMRNS" class="caixa panel panel-default">
             <div class="panel-heading">Remove Patient Health Record of sale's list</div>
             <div class="panel-body">
@@ -362,6 +363,106 @@
                 </form>
             </div>
             <div class="panel-footer" id="statusFormMRNS">
+            </div>
+        </div>
+
+        <br />
+        <div id="divFormATB" class="caixa panel panel-default">
+            <div class="panel-heading">Ask permission for Patient to buy her Medical Record</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmATB" name="frmATB" action="#">
+                    <div class="form-group">
+                        <label for="atbRecID" class="control-label col-sm-4">Record available ID: </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="atbRecID" id="atbRecID" min="1" maxlength="1000000000000000000" size="20">      
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="atbPurpose" class="control-label col-sm-4">Purpose (why you are buying this record): </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="atbPurpose" id="atbPurpose" maxlength="255" size="100">                 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="atbReqName" class="control-label col-sm-4">Requester's name: </label>                        
+                        <div class="col-sm-8">
+                            <input type="text" name="atbReqName" id="atbReqName" maxlength="255" size="100">
+                        </div>
+                    </div>                   
+                    <div class="form-group">
+                        <label for="atbReqEmail" class="control-label col-sm-4">Requester's email: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="atbReqEmail" id="atbReqEmail" maxlength="255" size="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="atbPrice" class="control-label col-sm-4">Price (in wei): </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="atbPrice" id="atbPrice" value="10000000000000" min="10000000000000" max="99999999999999999999" maxlength="19" size="20">
+                            <br />
+                            <i>Minimum price accepted: 10000000000000 wei (it represents only 0.00001 ether)</i> 
+                            <br />
+                            <i>to check/convert wei/ether numbers visit: <a href="https://etherconverter.online/" target="_blank">https://etherconverter.online/</a></i>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" id="btnInsertNewRequestToBuy" onclick="insertNewRequestToBuy()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverRequestToBuy" onclick="startOverRequestToBuy()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormATB">
+            </div>
+        </div>
+
+        <br />
+        <div id="divFormSell" class="caixa panel panel-default">
+            <div class="panel-heading">Patient selling data (confirming order)</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmSell" name="frmSell" action="#">
+                    <div class="form-group">
+                       &nbsp;&nbsp;&nbsp;
+                       IMPORTANT: Only the Patient can perform this action with her own data</center>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellRecID" class="control-label col-sm-4">Patient Record ID: </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="sellRecID" id="sellRecID" min="1" maxlength="10" size="10">                            
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <button type="button" id="btnInsertSell" onclick="insertSell()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverSell" onclick="startOverSell()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormSell">
+            </div>
+        </div>
+
+        <br />
+        <div id="divFormWithdraw" class="caixa panel panel-default">
+            <div class="panel-heading">Developer withdraw her comissions</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmWithdraw" name="frmWithdraw" action="#">
+                    <div class="form-group">
+                       &nbsp;&nbsp;&nbsp;
+                       IMPORTANT: Only the Developers can perform this action</center>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <button type="button" id="btnDeveloperWithdraw" onclick="developerWithdraw()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverDeveloperWithdraw" onclick="startOverDeveloperWithdraw()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormWithdraw">
             </div>
         </div>
 
