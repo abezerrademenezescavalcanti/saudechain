@@ -52,7 +52,43 @@ function insertNewPatient() {
     $("#btnInsertNewPatient").hide();
 }
 
+//Allow a thrid-party to handle Patient's medical records
+function thridPartyDisallowance() {
+    var frm = document.frmDisallow;
+    if (frm.disallowTPAddress.value.length < 41) {
+        $("#statusFormDisallow").css("background-color", "Salmon");
+        $("#statusFormDisallow").html("You must inform appropriate information");
+        return
+    }
+    $("#statusFormDisallow").css("background-color", "lightblue");
+    $("#statusFormDisallow").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
+    console.log("Sending... " + frm.disallowTPAddress.value);
+    contract.removeIssuers(frm.disallowTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+        if (!err) {
+            $("#statusFormDisallow").css("background-color", "yellow");
+            $("#statusFormDisallow").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
+            waitForTxToBeMined(result, "#statusFormDisallow");
+        } else {
+            console.error(err);
+            $("#statusFormDisallow").css("background-color", "Salmon");
+            $("#statusFormDisallow").html("Error " + JSON.stringify(err));
+        }
+    });
+    $("#btnStartOverDisallowance").show();
+    $("#btn3TPDisallowance").hide();
+}
 
+function startOverDisallowance() {
+    var frm = document.frmDisallow;
+    frm.disallowTPAddress.value = "";
+    $("#btnStartOverDisallowance").hide();
+    $("#btn3TPDisallowance").show();
+    $("#statusFormDisallow").css("background-color", "lightgray");
+    $("#statusFormDisallow").html("");
+}
+
+
+//Allow a thrid-party to handle Patient's medical records
 function insertNew3TPAllowance() {
     var frm = document.frmAllow;
     if (frm.allowTPAddress.value.length < 41) {
