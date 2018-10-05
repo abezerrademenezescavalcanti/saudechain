@@ -122,3 +122,40 @@ function startOverNew3TPAllowance() {
     $("#statusFormAllow").css("background-color", "lightgray");
     $("#statusFormAllow").html("");
 }
+
+
+//Make Patient's Medical Record not Sellable
+function startOverEraseRecord() {
+    var frm = document.frmEraseRecord;
+    frm.eraseRecID.value = "";
+    $("#btnStartOverEraseRec").hide();
+    $("#btnEraseRec").show();
+    $("#statusFormEraseRecord").css("background-color", "lightgray");
+    $("#statusFormEraseRecord").html("");
+}
+
+function eraseRecord() {
+    var frm = document.frmEraseRecord;
+    if (frm.eraseRecID.value < 1) {
+        $("#statusFormEraseRecord").css("background-color", "Salmon");
+        $("#statusFormEraseRecord").html("You must inform appropriate information");
+        $("#mrnsRecID").focus();
+        return
+    } 
+    $("#statusFormEraseRecord").css("background-color", "lightblue");
+    $("#statusFormEraseRecord").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
+    console.log("Sending... " + frm.eraseRecID.value);
+    contract.deleteRecord(frm.eraseRecID.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+        if (!err) {
+            $("#statusFormEraseRecord").css("background-color", "yellow");
+            $("#statusFormEraseRecord").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
+            waitForTxToBeMined(result, "#statusFormEraseRecord");
+        } else {
+            console.error(err);
+            $("#statusFormEraseRecord").css("background-color", "Salmon");
+            $("#statusFormEraseRecord").html("Error " + JSON.stringify(err));
+        }
+    });
+    $("#btnStartOverEraseRec").show();
+    $("#btnEraseRec").hide();
+}
