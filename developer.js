@@ -3,7 +3,7 @@ function getDeveloperDetail(address) {
         console.error("Invalid address");
         return;
     }
-    contract.getSingleDeveloper(address, function (err, result) {
+    devContract.getSingleDeveloper(address, function (err, result) {
         if (!err) {
             console.log(result[2].toString());
             $("#dev").text($("#dev").html() + " - " + result);
@@ -15,7 +15,7 @@ function getDeveloperDetail(address) {
 }
 
 function getTotalDevelopers() {    
-    contract.totalDevelopers(function (err, result) {
+    devContract.totalDevelopers(function (err, result) {
         if (!err) {
             var nroDev = result*1;
             if (nroDev>0) {
@@ -48,7 +48,7 @@ function insertNewDeveloper() {
     $("#statusFormDeveloper").css("background-color", "lightblue");
     $("#statusFormDeveloper").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
     console.log("Sending..." + frm.devAddress.value + " and " + frm.devCommission.value);
-    contract.newDeveloper(frm.devAddress.value, frm.devCommission.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+    devContract.newDeveloper(frm.devAddress.value, frm.devCommission.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
         if (!err) {
             $("#statusFormDeveloper").css("background-color", "yellow");
             $("#statusFormDeveloper").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
