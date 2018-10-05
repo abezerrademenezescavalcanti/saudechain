@@ -3,6 +3,7 @@ const DevelopersABI = [{"constant":true,"inputs":[],"name":"name","outputs":[{"n
 
 var web3;
 var contract;
+var devContract;
 
 if (typeof web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
