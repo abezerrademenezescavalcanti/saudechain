@@ -136,10 +136,16 @@ function insertSell() {
         $("#sellRecID").focus();
         return
     } 
+    if (frm.sellData.value < 10) {
+        $("#statusFormSell").css("background-color", "Salmon");
+        $("#statusFormSell").html("You must inform appropriate information");
+        $("#sellData").focus();
+        return
+    } 
     $("#statusFormSell").css("background-color", "lightblue");
     $("#statusFormSell").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
-    console.log("Sending... " + frm.sellRecID.value);
-    contract.sell(frm.sellRecID.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+    console.log("Sending... " + frm.sellRecID.value + " - [" + frm.sellData.value + "]");
+    contract.sell(frm.sellRecID.value, frm.sellData.value, {from: web3.eth.accounts[0], gas: 5000000, value: 0}, function (err, result) {
         if (!err) {
             $("#statusFormMRNS").css("background-color", "yellow");
             $("#statusFormMRNS").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
@@ -170,7 +176,7 @@ function developerWithdraw() {
     $("#statusFormWithdraw").css("background-color", "lightblue");
     $("#statusFormWithdraw").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
     console.log("Sending... " + web3.eth.accounts[0]);
-    contract.withdraw({from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+    devContract.withdraw({from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
         if (!err) {
             $("#statusFormWithdraw").css("background-color", "yellow");
             $("#statusFormWithdraw").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
