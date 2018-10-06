@@ -15,8 +15,8 @@
     <div id="content">
         <h1>My Health Data DAO - Test Page to interact with Project's Smart Contract</h1>
         <div id="dev">Connected to contract? <span id="statusConnectionContract">No</span></div>
-        <br /><br />
-        <h2>Record Categories</h2>
+        <br /><hr /><br />
+        <h2>Contract maintainers area</h2>
         <br />
         <div id="divFormCategory" class="caixa panel panel-default">
             <div class="panel-heading">Inserts new record category</div>
@@ -47,41 +47,7 @@
             </div>
         </div>
 
-
-        <br /><br />
-        <h2>Developers</h2>
-        <br />
-        <div id="divFormCategory" class="caixa panel panel-default">
-            <div class="panel-heading">Inserts new developer</div>
-            <div class="panel-body">
-                <form class="form-horizontal" id="frmDeveloper" name="frmDeveloper" action="#">
-                    <div class="form-group">
-                        <label for="devAddress" class="control-label col-sm-4">Developer Ethereum Address: </label>
-                        <div class="col-sm-8">
-                            <input type="text" name="devAddress" id="devAddress" maxlength="46" size="49">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="devCommission" class="control-label col-sm-4">Comission: </label>
-                        <div class="col-sm-8">
-                            <input type="number" name="devCommission" id="devCommission" min="1" max="100000000000000000">
-                            &nbsp; 
-                            <i>You must be aware that creating a new developer her comission will be deducted from your comission shares</i>
-                        </div>
-                    </div>                    
-                    <div class="form-group"> 
-                        <div class="col-sm-offset-2 col-sm-12">
-                        <button type="button" id="btnInsertNewDeveloper" onclick="insertNewDeveloper()" class="btn btn-default">Submit to Smart Contract</button>
-                        <button type="button" id="btnStartOverNewDeveloper" onclick="startOverNewDeveloper()" class="btn btn-default">Start over</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="panel-footer" id="statusFormDeveloper">
-            </div>
-        </div>
-
-        <br /><br />
+        <br /><hr /><br />
         <h2>Thrid-Party Institutions</h2>
         <br />
         <div id="divFormCategory" class="caixa panel panel-default">
@@ -119,8 +85,8 @@
             </div>
         </div>
 
-        <br /><br />
-        <h2>Patient</h2>
+        <br /><hr /><br />
+        <h2>Patient's area</h2>
         <br />
         <div id="divFormPatient" class="caixa panel panel-default">
             <div class="panel-heading">Inserts new Patient</div>
@@ -342,7 +308,7 @@
             <div class="panel-footer" id="statusFormEraseRecord">
             </div>
         </div>
-
+        
         <div>
             <h2>Data Marketplace</h2>
         </div>
@@ -417,6 +383,44 @@
         </div>
 
         <br />
+        <div id="divFormSell" class="caixa panel panel-default">
+            <div class="panel-heading">Patient selling her data (confirming order)</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmSell" name="frmSell" action="#">
+                    <div class="form-group">
+                       &nbsp;&nbsp;&nbsp;
+                       IMPORTANT: Only the Patient can perform this action with her own data</center>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellRecID" class="control-label col-sm-4">Patient Record ID: </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="sellRecID" id="sellRecID" min="1" maxlength="10" size="10">                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellData" class="control-label col-sm-4">Patient Record Data: </label>
+                        <div class="col-sm-8">
+                            <textarea name="sellData" id="sellData" rows="4" cols="100"></textarea>                         
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <button type="button" id="btnInsertSell" onclick="insertSell()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverSell" onclick="startOverSell()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormSell">
+            </div>
+        </div>
+
+
+        <div>
+            <h4>Data Marketplace - Data Buyer's perspective</h4>
+        </div>
+        <br />
+        
         <div id="divFormATB" class="caixa panel panel-default">
             <div class="panel-heading">Ask permission for Patient to buy her Medical Record</div>
             <div class="panel-body">
@@ -466,44 +470,45 @@
             </div>
             <div class="panel-footer" id="statusFormATB">
             </div>
-        </div>
+        </div>   
 
+
+        <br /><hr /><br />
+        <h2>Investors area</h2>
         <br />
-        <div id="divFormSell" class="caixa panel panel-default">
-            <div class="panel-heading">Patient selling data (confirming order)</div>
+        <div id="divFormCategory" class="caixa panel panel-default">
+            <div class="panel-heading">Inserts new developer</div>
             <div class="panel-body">
-                <form class="form-horizontal" id="frmSell" name="frmSell" action="#">
+                <form class="form-horizontal" id="frmDeveloper" name="frmDeveloper" action="#">
                     <div class="form-group">
-                       &nbsp;&nbsp;&nbsp;
-                       IMPORTANT: Only the Patient can perform this action with her own data</center>
-                    </div>
-                    <div class="form-group">
-                        <label for="sellRecID" class="control-label col-sm-4">Patient Record ID: </label>
+                        <label for="devAddress" class="control-label col-sm-4">Developer Ethereum Address: </label>
                         <div class="col-sm-8">
-                            <input type="number" name="sellRecID" id="sellRecID" min="1" maxlength="10" size="10">                            
+                            <input type="text" name="devAddress" id="devAddress" maxlength="46" size="49">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="sellData" class="control-label col-sm-4">Patient Record Data: </label>
+                        <label for="devCommission" class="control-label col-sm-4">Commission: </label>
                         <div class="col-sm-8">
-                            <textarea name="sellData" id="sellData" rows="4" cols="100"></textarea>                         
+                            <input type="number" name="devCommission" id="devCommission" min="1" max="100000000000000000">
+                            &nbsp; 
+                            <i>You must be aware that creating a new developer her commission will be deducted from your commission shares</i>
                         </div>
-                    </div>
+                    </div>                    
                     <div class="form-group"> 
                         <div class="col-sm-offset-2 col-sm-12">
-                        <button type="button" id="btnInsertSell" onclick="insertSell()" class="btn btn-default">Submit to Smart Contract</button>
-                        <button type="button" id="btnStartOverSell" onclick="startOverSell()" class="btn btn-default">Start over</button>
+                        <button type="button" id="btnInsertNewDeveloper" onclick="insertNewDeveloper()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewDeveloper" onclick="startOverNewDeveloper()" class="btn btn-default">Start over</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="panel-footer" id="statusFormSell">
+            <div class="panel-footer" id="statusFormDeveloper">
             </div>
         </div>
 
         <br />
         <div id="divFormWithdraw" class="caixa panel panel-default">
-            <div class="panel-heading">Developer withdraw her comissions</div>
+            <div class="panel-heading">Developer/Investor withdraw her commissions</div>
             <div class="panel-body">
                 <form class="form-horizontal" id="frmWithdraw" name="frmWithdraw" action="#">
                     <div class="form-group">
