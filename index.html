@@ -309,6 +309,8 @@
             </div>
         </div>
         
+        <br />
+        <hr />
         <div>
             <h2>Data Marketplace</h2>
         </div>
@@ -416,6 +418,8 @@
         </div>
 
 
+        <br />
+        <hr />
         <div>
             <h4>Data Marketplace - Data Buyer's perspective</h4>
         </div>
@@ -527,6 +531,72 @@
             </div>
         </div>
 
+        <br />
+        <div id="divFormSpenderApproval" class="caixa panel panel-default">
+            <div class="panel-heading">Developer/Investor approves a thrid-party to trade her commission</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmSA" name="frmSA" action="#">
+                    <div class="form-group">
+                        <label for="saAddress" class="control-label col-sm-4">Spender/Trader/Exchange Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="saAddress" id="saAddress" maxlength="46" size="49">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="saAmount" class="control-label col-sm-4">Token amount: </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="saAmount" id="saAmount" min="1" max="100000000000000000">
+                            &nbsp; 
+                            <i>Approving the provided address to spend the specified amount of tokens on behalf of you.</i>
+                        </div>
+                    </div>                    
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <button type="button" id="btnInsertNewApproval" onclick="insertNewApproval()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewApproval" onclick="startOverNewApproval()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormSA">
+            </div>
+        </div>
+
+
+        <br />
+        <div id="divFormTransferFrom" class="caixa panel panel-default">
+            <div class="panel-heading">Trader transfer MyHealthData Commission Token (MHDDEV) to new buyer</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmTF" name="frmTF" action="#">
+                    <div class="form-group">
+                        <label for="tfSellerAddress" class="control-label col-sm-4">Seller Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="tfSellerAddress" id="tfSellerAddress" maxlength="46" size="49">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tfBuyerAddress" class="control-label col-sm-4">Buyer/Investor Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="tfBuyerAddress" id="tfBuyerAddress" maxlength="46" size="49">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tfAmount" class="control-label col-sm-4">Token amount: </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="tfAmount" id="tfAmount" min="1" max="100000000000000000">                            
+                        </div>
+                    </div>                    
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <button type="button" id="btnInsertNewTranferTrader" onclick="insertNewTransferTrader()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewTransferTrader" onclick="startOverNewTransferTrader()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormTF">
+            </div>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
