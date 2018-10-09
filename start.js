@@ -12,6 +12,10 @@ jQuery(document).ready(function() {
     $("#btnStartOverRequestToBuy").hide();
     $("#btnStartOverSell").hide();
     $("#btnStartOverDeveloperWithdraw").hide();
+    $("#btnStartOverNewTransferTrader").hide();
+    $("#btnStartOverNewApproval").hide();
+    $("#btnStartOverNewTransferTrader").hide();
+    $("#btnStartOverDisallowance").hide();
     getTotalDevelopers();
     loadPatientCountryList();
     loadTPCountryList();

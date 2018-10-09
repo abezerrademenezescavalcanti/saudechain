@@ -147,8 +147,8 @@ function insertSell() {
     console.log("Sending... " + frm.sellRecID.value + " - [" + frm.sellData.value + "]");
     contract.sell(frm.sellRecID.value, frm.sellData.value, {from: web3.eth.accounts[0], gas: 5000000, value: 0}, function (err, result) {
         if (!err) {
-            $("#statusFormMRNS").css("background-color", "yellow");
-            $("#statusFormMRNS").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
+            $("#statusFormSell").css("background-color", "yellow");
+            $("#statusFormSell").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
             waitForTxToBeMined(result, "#statusFormSell");
         } else {
             console.error(err);
