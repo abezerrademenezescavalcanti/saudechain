@@ -10,8 +10,8 @@ if (typeof web3 !== 'undefined') {
 } else {
     web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/QPF0qjGpH9OjFuuMrCse"))
 }
-contract = web3.eth.contract(RegMedABI).at("0x68ceeee7621d21f69f3f1aa71a426d95e4d1b9c1"); 
-devContract = web3.eth.contract(DevelopersABI).at("0xce26d977396d694486867ef0dd5fbeaca76c4291"); 
+contract = web3.eth.contract(RegMedABI).at("0x8aa729e6b7c4196f166dc352aaece0334879a15d"); 
+devContract = web3.eth.contract(DevelopersABI).at("0xbed668F915ced99CCAbE607689C4Fd8208C13d4d"); 
 
 function waitForTxToBeMined(txHash, objStatus) {
     let txReceipt;
