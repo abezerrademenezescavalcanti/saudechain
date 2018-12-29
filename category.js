@@ -1,6 +1,6 @@
 function insertNewCategory() {
     var frm = document.frmCategory;
-    if (frm.catCode.value.length < 8 || frm.catDescription.value.length < 5) {
+    if (frm.catCode.value.length < 2 || frm.catDescription.value.length < 5) {
         $("#statusFormCategory").css("background-color", "Salmon");
         $("#statusFormCategory").html("You must inform appropriate information");
         return

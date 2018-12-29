@@ -19,7 +19,7 @@ function insertNewRecord() {
         $("#recPatAddress").focus();
         return
     }
-    if (frm.recCode.value.length < 4) {
+    if (frm.recCode.value.length < 2) {
         $("#statusFormRecord").css("background-color", "Salmon");
         $("#statusFormRecord").html("You must inform appropriate information");
         $("#recCode").focus();
