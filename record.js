@@ -105,3 +105,75 @@ function insertMediaToRecord() {
     $("#btnStartOverMediaToRecord").show();
     $("#btnInsertMediaToRecord").hide();
 }
+
+
+/*******
+ * 
+ * Vaccination area
+ * 
+ */
+
+function startOverNewVaccine() {
+    var frm = document.frmNewVaccine;
+    frm.recPatAddress.value = "";
+    frm.recDate.value = "";
+    frm.recCode.value = "";
+    frm.recVaccine.value = "";
+    frm.recProfessional.value = "";
+    frm.recProfessionalStatus.selectedIndex = 0;
+    frm.recManufacturer.value = "";
+    frm.recBatchOfVaccine.value = "";
+    frm.recValidUntil.value = "";
+    frm.recVaccinatedAgainst.value = "";
+    frm.recClinicCenter.value = "";
+    frm.recTPAddress.value = "";
+    $("#btnStartOverNewVaccine").hide();
+    $("#btnInsertNewVaccine").show();
+    $("#statusFormVaccine").css("background-color", "lightgray");
+    $("#statusFormVaccine").html("");
+}
+
+function insertNewVaccine() {
+    var frm = document.frmNewVaccine;
+    if (frm.recPatAddress.value.length < 41) {
+        $("#statusFormVaccine").css("background-color", "Salmon");
+        $("#statusFormVaccine").html("You must inform appropriate information");
+        $("#recPatAddress").focus();
+        return
+    }
+    if (frm.recCode.value.length < 2) {
+        $("#statusFormVaccine").css("background-color", "Salmon");
+        $("#statusFormVaccine").html("You must inform appropriate information");
+        $("#recCode").focus();
+        return
+    }
+    if (frm.recDate.value.length != 10) {
+        $("#statusFormVaccine").css("background-color", "Salmon");
+        $("#statusFormVaccine").html("You must inform appropriate information");
+        $("#recDate").focus();
+        return
+    }
+    if (frm.recBatchOfVaccine.value.length < 3) {
+        $("#statusFormVaccine").css("background-color", "Salmon");
+        $("#statusFormVaccine").html("You must inform appropriate information");
+        $("#recBatchOfVaccine").focus();
+        return
+    }
+    $("#statusFormVaccine").css("background-color", "lightblue");
+    $("#statusFormVaccine").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
+    let vaccineDetails = frm.recVaccine.value + ";" + frm.recProfessional.value + "(" + frm.recProfessionalStatus.value + ")" + ";" + frm.recManufacturer.value + ";" + frm.recBatchOfVaccine.value + ";" + frm.recDate.value + ";" + frm.recValidUntil.value + ";" + frm.recVaccinatedAgainst.value + ";" + frm.recClinicCenter.value;
+    console.log("Sending..." + frm.recPatAddress.value + " - " + web3.fromAscii(frm.recCode.value, 10) + " - " + vaccineDetails);
+    contract.newRecord(frm.recPatAddress.value, web3.fromAscii(frm.recCode.value, 10), frm.recDate.value, vaccineDetails, frm.recTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+        if (!err) {
+            $("#statusFormVaccine").css("background-color", "yellow");
+            $("#statusFormVaccine").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
+            waitForTxToBeMined(result, "#statusFormVaccine");
+        } else {
+            console.error(err);
+            $("#statusFormVaccine").css("background-color", "Salmon");
+            $("#statusFormVaccine").html("Error " + JSON.stringify(err));
+        }
+    });
+    $("#btnStartOverNewVaccine").show();
+    $("#btnInsertNewVaccine").hide();
+}

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="saudechain.css">
     <meta name="description" content="My Health Data Project's Smart Contract">
     <meta name="authors" content="Bezerra de Menezes Cavalcanti">
-    <title>My Health Data DAO - Test Page</title>
+    <title>My Health Data DAO - Smart Contract Interface</title>
 </head>
 <body>
     <div id="content">
@@ -238,6 +238,108 @@
             <div class="panel-footer" id="statusFormRecord">
             </div>
         </div>
+
+
+        <br />
+        <div id="divFormVaccine" class="caixa panel panel-default">
+            <div class="panel-heading">Inserts new Vaccine record</div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="frmNewVaccine" name="frmNewVaccine" action="#">
+                    <div class="form-group">
+                        <label for="recPatAddress" class="control-label col-sm-4">Patient Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recPatAddress" id="recPatAddress" maxlength="46" size="55">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recCode" class="control-label col-sm-4">ICD (<a href="http://https://icd.who.int/browse11/l-m/en" target="_blank">International Classification of Diseases</a>) Code: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recCode" id="recCode" maxlength="10" size="26">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recDate" class="control-label col-sm-4">Date of Fact: </label>                        
+                        <div class="col-sm-8">
+                            <input type="text" id="recDate" placeholder="2018-07-30" name="recDate" class="form-control fieldDate" size="14" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+                            &nbsp;
+                            <i>Year - Month - Day format</i>
+                        </div>
+                    </div>                   
+                    
+                    <div class="form-group">
+                        <label for="recVaccinatedAgainst" class="control-label col-sm-4">Vaccinated against: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recVaccinatedAgainst" id="recVaccinatedAgainst" maxlength="256" size="80">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recVaccine" class="control-label col-sm-4">Vaccine: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recVaccine" id="recVaccine" maxlength="256" size="80">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recBatchOfVaccine" class="control-label col-sm-4">Batch of Vaccine: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recBatchOfVaccine" id="recBatchOfVaccine" maxlength="256" size="80">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recProfessional" class="control-label col-sm-4">Name of medic/nurse responsabile: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recProfessional" id="recProfessional" maxlength="256" size="80">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recProfessionalStatus" class="control-label col-sm-4">Professional Status: </label>
+                        <div class="col-sm-8">
+                            <select name="recProfessionalStatus" id="recProfessionalStatus">
+                                <option value="Nurse">Nurse</option>
+                                <option value="Medic">Medic</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recManufacturer" class="control-label col-sm-4">Manufacturer: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recManufacturer" id="recManufacturer" maxlength="256" size="80">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recValidUntil" class="control-label col-sm-4">Vaccination valid until: </label>
+                        <div class="col-sm-8">
+                            <input type="text" id="recValidUntil" placeholder="2018-07-30" name="recValidUntil" class="form-control fieldDate" size="14" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+                            &nbsp;
+                            <i>Year - Month - Day format</i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recClinicCenter" class="control-label col-sm-4">Where vaccine was admnistrated (Clinic center): </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recClinicCenter" id="recClinicCenter" maxlength="256" size="80">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recTPAddress" class="control-label col-sm-4">Third-Party Ethereum Address: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recTPAddress" id="recTPAddress" maxlength="46" size="55">
+                            <br /><i>In case a third-party is inserting data on patient's behalf</i>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" id="btnInsertNewVaccine" onclick="insertNewVaccine()" class="btn btn-default">Submit to Smart Contract</button>
+                        <button type="button" id="btnStartOverNewVaccine" onclick="startOverNewVaccine()" class="btn btn-default">Start over</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer" id="statusFormVaccine">
+            </div>
+        </div>
+
 
         <br />
         <div id="divFormMedia" class="caixa panel panel-default">
@@ -599,7 +701,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>

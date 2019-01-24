@@ -4,18 +4,28 @@ const DevelopersABI = [{"anonymous":false,"inputs":[{"indexed":true,"name":"toke
 var web3;
 var contract;
 var devContract;
+var network;
 
 if (window.ethereum) {
     web3 = new Web3(ethereum);
     try {
         // Solicita acesso a carteira Ethereum se necessário
-        ethereum.enable();        
-    } catch (err) { // Usuário ainda não deu permissão para acessar a carteira Ethereum     
+        ethereum.enable();    
+    } catch (err) { // Usuário ainda não deu permissão para acessar a carteira Ethereum    
+        console.log("erro"); 
         console.error(err);           
     }
 }
-contract = web3.eth.contract(RegMedABI).at("0xe7402e8cde5566c926f8103b793fa6eeec13c2b5"); 
-devContract = web3.eth.contract(DevelopersABI).at("0xc1538f136acb1bb615b849d229b1c4f7bdcfd19d"); 
+
+network = web3.version.network;
+if (network === "4") {
+    contract = web3.eth.contract(RegMedABI).at("0x58e43fdcfcdbadb71533b678648f4913171e1425"); 
+    devContract = web3.eth.contract(DevelopersABI).at("0xc700a16c326e7d10457ad6b0a2c99716f9e44ba0"); 
+} else {
+    contract = web3.eth.contract(RegMedABI).at("0xe7402e8cde5566c926f8103b793fa6eeec13c2b5"); 
+    devContract = web3.eth.contract(DevelopersABI).at("0xc1538f136acb1bb615b849d229b1c4f7bdcfd19d");
+}
+
 
 function waitForTxToBeMined(txHash, objStatus) {
     let txReceipt;

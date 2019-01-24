@@ -5,6 +5,7 @@ jQuery(document).ready(function() {
     $("#btnStartOverNewTP").hide();
     $("#btnStartOverNewPatient").hide();
     $("#btnStartOverNewRecord").hide();
+    $("#btnStartOverNewVaccine").hide();
     $("#btnStartOverNew3TPAllowance").hide();
     $("#btnStartOverMediaToRecord").hide();
     $("#btnStartOverNewMRS").hide();

@@ -1,0 +1,42 @@
+nome da vacina = BCG; 
+nome do medico/enfermeiro responsável = GRACIANE; 
+fabricante da vacina = ; 
+lote da vacina = Lote 8010; 
+data de inicio da validade/efeito da vacinação = 2019-01-15; 
+data fim de validade/efeito da vacinação = ; 
+local de vacinação = Pro Matre Paulista;
+
+nome da vacina = ; 
+nome do medico/enfermeiro responsável = ; 
+fabricante da vacina =  ; 
+lote da vacina = ; 
+data de inicio da validade/efeito da vacinação = ; 
+data fim de validade/efeito da vacinação = ; 
+local de vacinação = ;
+
+
+BCG; GRACIANE; Instituto Ataulpho de Paiva; Lote 8010; 2019-01-15/Indeterminada; Proteção Tuberculose; Pro Matre Paulista
+
+0x71FC2c74ea9E8C3e68D4b9196C9F9AB93F782186
+Z246
+2019-01-15
+Hepatite B; Eliani (Nurse); LG Life Science; Lote OB5L6051A; 2019-01-14;Indeterminada; Proteção Hepatite B; Pro Matre Paulista
+0x7CdFCBccb636E2772EA1a47065628E75b5DE5142
+
+Vacina
+Profissional
+Status profissional do supervisor clinico 
+Fabricante da vacina
+Lote da vacina
+Cobertura valida até
+Proteção contra a doença
+Local de vacinação
+
+Vacina => recVaccine
+Profissional => recProfessional
+Status profissional do supervisor clinico => recProfessionalStatus
+Fabricante da vacina => recManufacturer
+Lote da vacina => recBatchOfVaccine
+Cobertura valida até => recValidUntil
+Proteção contra a doença => recVaccinatedAgainst
+Local de vacinação => recClinicCenter

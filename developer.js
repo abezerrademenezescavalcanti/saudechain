@@ -16,12 +16,17 @@ function getDeveloperDetail(address) {
 
 function getTotalDevelopers() {    
     devContract.totalDevelopers(function (err, result) {
+        console.log("qual contrato?");
+        console.log(devContract);
         if (!err) {
-            var nroDev = result*1;
+            console.log("result: getTotalDevelopers");
+            console.log(result);
+            let nroDev = result*1;
             if (nroDev>0) {
                 $("#statusConnectionContract").text("Yes");
             }
         } else {
+            console.log("Erro: getTotalDevelopers");
             console.error(err);
             $("#dev").html(err);
         }
