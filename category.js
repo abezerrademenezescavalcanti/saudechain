@@ -7,8 +7,8 @@ function insertNewCategory() {
     }
     $("#statusFormCategory").css("background-color", "lightblue");
     $("#statusFormCategory").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
-    console.log("Sending..." + web3.fromAscii(frm.catCode.value, 10) + " and " + frm.catDescription.value);
-    contract.newRecordCategory(web3.fromAscii(frm.catCode.value, 10), frm.catDescription.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+    console.log("Sending..." + frm.catCode.value + " and " + frm.catDescription.value);
+    contract.newRecordCategory(frm.catCode.value, frm.catDescription.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
         if (!err) {
             $("#statusFormCategory").css("background-color", "yellow");
             $("#statusFormCategory").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
