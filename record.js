@@ -39,7 +39,7 @@ function insertNewRecord() {
     }
     $("#statusFormRecord").css("background-color", "lightblue");
     $("#statusFormRecord").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
-    console.log("Sending..." + frm.recPatAddress.value + " - " + web3.fromAscii(frm.recCode.value, 10));
+    console.log("Sending..." + frm.recPatAddress.value + " - " + frm.recCode.value + " - " + frm.recDetails.value);
     contract.newRecord(frm.recPatAddress.value, web3.fromAscii(frm.recCode.value, 10), frm.recDate.value, frm.recDetails.value, frm.recTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
         if (!err) {
             $("#statusFormRecord").css("background-color", "yellow");
@@ -162,8 +162,8 @@ function insertNewVaccine() {
     $("#statusFormVaccine").css("background-color", "lightblue");
     $("#statusFormVaccine").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
     let vaccineDetails = frm.recVaccine.value + ";" + frm.recProfessional.value + "(" + frm.recProfessionalStatus.value + ")" + ";" + frm.recManufacturer.value + ";" + frm.recBatchOfVaccine.value + ";" + frm.recDate.value + ";" + frm.recValidUntil.value + ";" + frm.recVaccinatedAgainst.value + ";" + frm.recClinicCenter.value;
-    console.log("Sending..." + frm.recPatAddress.value + " - " + web3.fromAscii(frm.recCode.value, 10) + " - " + vaccineDetails);
-    contract.newRecord(frm.recPatAddress.value, web3.fromAscii(frm.recCode.value, 10), frm.recDate.value, vaccineDetails, frm.recTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+    console.log("Sending..." + frm.recPatAddress.value + " - " + frm.recCode.value + " - " + vaccineDetails);
+    contract.newRecord(frm.recPatAddress.value, frm.recCode.value, frm.recDate.value, vaccineDetails, frm.recTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
         if (!err) {
             $("#statusFormVaccine").css("background-color", "yellow");
             $("#statusFormVaccine").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
