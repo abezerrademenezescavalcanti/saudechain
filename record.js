@@ -40,7 +40,7 @@ function insertNewRecord() {
     $("#statusFormRecord").css("background-color", "lightblue");
     $("#statusFormRecord").html("Waiting for you to confirm the transaction in MetaMask or another Ethereum wallet software");
     console.log("Sending..." + frm.recPatAddress.value + " - " + frm.recCode.value + " - " + frm.recDetails.value);
-    contract.newRecord(frm.recPatAddress.value, web3.fromAscii(frm.recCode.value, 10), frm.recDate.value, frm.recDetails.value, frm.recTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
+    contract.newRecord(frm.recPatAddress.value, frm.recCode.value, frm.recDate.value, frm.recDetails.value, frm.recTPAddress.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (err, result) {
         if (!err) {
             $("#statusFormRecord").css("background-color", "yellow");
             $("#statusFormRecord").text("Transaction sent. Wait until it is mined. Transaction hash: " + result);
