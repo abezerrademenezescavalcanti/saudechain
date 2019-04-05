@@ -149,10 +149,12 @@ function insertNewVaccine() {
         return
     }
     if (frm.recDate.value.length != 10) {
-        $("#statusFormVaccine").css("background-color", "Salmon");
-        $("#statusFormVaccine").html("You must inform appropriate information");
-        $("#recDate").focus();
-        return
+        if (frm.recDate.value.length > 0) {
+            $("#statusFormVaccine").css("background-color", "Salmon");
+            $("#statusFormVaccine").html("You must inform appropriate information");
+            $("#recDate").focus();
+            return
+        }
     }
     if (frm.recBatchOfVaccine.value.length < 3) {
         $("#statusFormVaccine").css("background-color", "Salmon");

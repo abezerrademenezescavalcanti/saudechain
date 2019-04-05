@@ -282,15 +282,21 @@
                     </div>                   
                     
                     <div class="form-group">
-                        <label for="recVaccinatedAgainst" class="control-label col-sm-4">Vaccinated against: </label>
+                        <label for="recVaccinatedAgainst" class="control-label col-sm-4">Vaccinated against (disease): </label>
                         <div class="col-sm-8">
                             <input type="text" name="recVaccinatedAgainst" id="recVaccinatedAgainst" maxlength="256" size="80">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="recVaccine" class="control-label col-sm-4">Vaccine: </label>
+                        <label for="recVaccine" class="control-label col-sm-4">Vaccine name: </label>
                         <div class="col-sm-8">
                             <input type="text" name="recVaccine" id="recVaccine" maxlength="256" size="80">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recManufacturer" class="control-label col-sm-4">Vaccine Manufacturer: </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recManufacturer" id="recManufacturer" maxlength="256" size="80">
                         </div>
                     </div>
                     <div class="form-group">
@@ -300,7 +306,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="recProfessional" class="control-label col-sm-4">Name of medic/nurse responsabile: </label>
+                        <label for="recProfessional" class="control-label col-sm-4">Medical Professional name responsabile for administrating the vaccine or profilaxis: </label>
                         <div class="col-sm-8">
                             <input type="text" name="recProfessional" id="recProfessional" maxlength="256" size="80">
                         </div>
@@ -311,26 +317,20 @@
                             <select name="recProfessionalStatus" id="recProfessionalStatus">
                                 <option value="Nurse">Nurse</option>
                                 <option value="Medic">Medic</option>
+                                <option value="Physician">Physician</option>
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recManufacturer" class="control-label col-sm-4">Manufacturer: </label>
-                        <div class="col-sm-8">
-                            <input type="text" name="recManufacturer" id="recManufacturer" maxlength="256" size="80">
-                        </div>
-                    </div>
-                    
                     <div class="form-group">
                         <label for="recValidUntil" class="control-label col-sm-4">Vaccination valid until: </label>
                         <div class="col-sm-8">
                             <input type="text" id="recValidUntil" placeholder="2018-07-30" name="recValidUntil" class="form-control fieldDate" size="14" data-provide="datepicker" data-date-format="yyyy-mm-dd">
                             &nbsp;
-                            <i>Year - Month - Day format</i>
+                            <i>Year - Month - Day format or leave it blank if the vaccine is lifelong valid</i>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="recClinicCenter" class="control-label col-sm-4">Where vaccine was admnistrated (Clinic center): </label>
+                        <label for="recClinicCenter" class="control-label col-sm-4">Where vaccine was admnistrated (Clinic/Medical/Hospital Center name): </label>
                         <div class="col-sm-8">
                             <input type="text" name="recClinicCenter" id="recClinicCenter" maxlength="256" size="80">
                         </div>
